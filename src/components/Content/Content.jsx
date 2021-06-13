@@ -1,8 +1,10 @@
-
+import classes from "./Content.module.css"
 
 const Content = () => {
     return (
-        <div>content</div>
+        <div className={classes.content}>
+            content
+        </div>
     );
 }
 

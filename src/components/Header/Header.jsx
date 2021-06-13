@@ -1,10 +1,10 @@
-
+import classes from "./Header.module.css";
 
 const Header = () => {
     return (
-        <div>
-            <header>header</header>
-        </div>
+            <header className={classes.header}>
+                header
+            </header>
     );
 }
 

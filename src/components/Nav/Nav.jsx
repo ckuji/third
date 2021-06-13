@@ -1,8 +1,8 @@
-
+import classes from "./Nav.module.css";
 
 const Nav = () => {
     return (
-        <div>
+        <div className={classes.nav}>
             navigation
         </div>
     );
