@@ -1,9 +1,19 @@
 import classes from "./Content.module.css"
+import Profile from "./Profile/Profile";
+import Messages from "./Messages/Messages";
+import Friends from "./Friens/Friens";
+import MyWorks from "./MyWorks/MyWorks";
+import News from "./News/News";
+import {Route} from "react-router-dom";
 
 const Content = () => {
     return (
         <div className={classes.content}>
-            content
+            <Route path="/profile" component={Profile} />
+            <Route path="/messages" component={Messages} />
+            <Route path="/friends" component={Friends} />
+            <Route path="/my_works" component={MyWorks} />
+            <Route path="/news" component={News} />
         </div>
     );
 }
