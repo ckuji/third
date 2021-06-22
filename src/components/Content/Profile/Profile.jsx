@@ -16,7 +16,7 @@ const Profile = () => {
             <div className={classes.posts}>
                 <h1>Записи</h1>
                 <form action="">
-                    <input className={classes.sendText} type="text"/>
+                    <textarea className={classes.sendText} name="" id="" cols="30" rows="10"></textarea>
                     <div className={classes.buttonWrapper}>
                         <button className={classes.sendButton}>Отправить</button>
                     </div>
