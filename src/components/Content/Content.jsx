@@ -6,10 +6,10 @@ import MyWorks from "./MyWorks/MyWorks";
 import News from "./News/News";
 import {Route} from "react-router-dom";
 
-const Content = () => {
+const Content = (props) => {
     return (
         <div className={classes.content}>
-            <Route path="/profile" component={Profile} />
+            <Route path="/profile" render={() => <Profile profileData={props.state.profileData} /> } />
             <Route path="/messages" component={Messages} />
             <Route path="/friends" component={Friends} />
             <Route path="/my_works" component={MyWorks} />
