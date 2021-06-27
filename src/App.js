@@ -8,7 +8,9 @@ const App = (props) => {
         <div className="main-content">
             <Header />
             <Nav />
-            <Content state={props.state} />
+            <Content state={props.state}
+                     textareaChangeFunction={props.textareaChangeFunction}
+                     addNewPost={props.addNewPost}   />
         </div>
     );
 }

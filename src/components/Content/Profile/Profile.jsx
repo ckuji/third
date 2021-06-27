@@ -1,7 +1,22 @@
 import classes from './Profile.module.css';
 import Posts from "./Posts/Posts";
+import React from "react";
 
 const Profile = (props) => {
+
+    debugger;
+
+    let textareaValue = React.createRef();
+
+    let textareaChange = () => {
+        let text = textareaValue.current.value;
+        props.textareaChangeFunction(text);
+    };
+
+    let addPost = () => {
+        props.addNewPost();
+    };
+
     return (
         <div className={classes.mainGrid}>
             <div className={classes.avatar}>
@@ -16,9 +31,12 @@ const Profile = (props) => {
             <div className={classes.posts}>
                 <h1>Записи</h1>
                 <form action="">
-                    <textarea className={classes.sendText} name="" id="" cols="30" rows="10"></textarea>
+                    <textarea className={classes.sendText}
+                              ref={textareaValue}
+                              value={props.profileData.textareaValueShow}
+                              onChange={textareaChange}  />
                     <div className={classes.buttonWrapper}>
-                        <button className={classes.sendButton}>Отправить</button>
+                        <button className={classes.sendButton} onClick={addPost}>Отправить</button>
                     </div>
                 </form>
                 <Posts postData={props.profileData.postData} />

@@ -1,3 +1,7 @@
+let rerenderEntireTree = () => {
+
+}
+
 let state = {
     profileData: {
         startProfileData: [
@@ -9,6 +13,7 @@ let state = {
                 commonCountLikes: 99
             }
         ],
+        textareaValueShow: 'Начни писать от сюда',
         postData: [
             {
                 id: 1,
@@ -42,6 +47,27 @@ let state = {
             }
         ]
     }
+}
+
+export let textareaChangeFunction = (text) => {
+    state.profileData.textareaValueShow = text;
+    rerenderEntireTree(state);
+}
+
+export let addNewPost = () => {
+    let post = {
+        id: 6,
+        fullName: 'Иванов Иван Иванович',
+        text: state.profileData.textareaValueShow,
+        likes: 11
+    }
+    state.profileData.postData.push(post);
+    // state.profileData.textareaValueShow = '';
+    rerenderEntireTree(state)
+}
+
+export const subscriber = (observer) => {
+    rerenderEntireTree = observer;
 }
 
 export default state;
