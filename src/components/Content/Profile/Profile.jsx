@@ -4,8 +4,6 @@ import React from "react";
 
 const Profile = (props) => {
 
-    debugger;
-
     let textareaValue = React.createRef();
 
     let textareaChange = () => {
@@ -14,6 +12,7 @@ const Profile = (props) => {
     };
 
     let addPost = () => {
+        debugger;
         props.addNewPost();
     };
 
@@ -36,7 +35,7 @@ const Profile = (props) => {
                               value={props.profileData.textareaValueShow}
                               onChange={textareaChange}  />
                     <div className={classes.buttonWrapper}>
-                        <button className={classes.sendButton} onClick={addPost}>Отправить</button>
+                        <div className={classes.sendButton} onClick={addPost}>Отправить</div>
                     </div>
                 </form>
                 <Posts postData={props.profileData.postData} />

@@ -4,22 +4,22 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
-import state, {addNewPost, subscriber, textareaChangeFunction} from "./redux/state";
+import store from "./redux/state";
 
 let rerenderEntireTree = () => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App state={state}
-                     textareaChangeFunction={textareaChangeFunction}
-                     addNewPost={addNewPost}   />
+                <App state={store.getState()}
+                     textareaChangeFunction={store.textareaChangeFunction.bind(store)}
+                     addNewPost={store.addNewPost.bind(store)}   />
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
 
-subscriber(rerenderEntireTree);
+store.subscriber(rerenderEntireTree);
 
 rerenderEntireTree();
 
