@@ -1,9 +1,16 @@
+import classes from './Messages.module.css';
+import FriendItem from "./FriendItem/FriendItem";
 
+const Messages = (props) => {
 
-const Messages = () => {
+    let someFriendList = props.messagesData.friendsListData.map( friend => <FriendItem friendName={friend.fullName} /> )
+
     return (
-        <div>
-            Messages
+        <div className={classes.messages}>
+            <div className={classes.friendList}>
+                {someFriendList}
+            </div>
+            <div className={classes.dialogList}>dialog list</div>
         </div>
     );
 }

@@ -1,0 +1,12 @@
+.messages {
+    display: flex;
+}
+
+.friendList {
+    width: 300px;
+    padding: 20px;
+}
+
+.dialogList {
+    padding: 20px;
+}

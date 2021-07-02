@@ -10,9 +10,8 @@ const Content = (props) => {
     return (
         <div className={classes.content}>
             <Route path="/profile" render={() => <Profile profileData={props.state.profileData}
-                                                          textareaChangeFunction={props.textareaChangeFunction}
-                                                          addNewPost={props.addNewPost}  /> } />
-            <Route path="/messages" component={Messages} />
+                                                          dispatch={props.dispatch}  /> } />
+            <Route path="/messages" render={ () => <Messages messagesData={props.state.messagesData} /> } />
             <Route path="/friends" component={Friends} />
             <Route path="/my_works" component={MyWorks} />
             <Route path="/news" component={News} />

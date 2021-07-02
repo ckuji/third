@@ -8,12 +8,11 @@ const Profile = (props) => {
 
     let textareaChange = () => {
         let text = textareaValue.current.value;
-        props.textareaChangeFunction(text);
+        props.dispatch( {type: 'TEXTAREA-CHANGE-FUNCTION', text: text} );
     };
 
     let addPost = () => {
-        debugger;
-        props.addNewPost();
+        props.dispatch( {type: 'ADD-NEW-POST'} );
     };
 
     return (
