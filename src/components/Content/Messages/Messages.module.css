@@ -8,9 +8,28 @@
 }
 
 .dialogList {
-    padding: 20px;
     border: 2px solid #234456;
     border-top: none;
     flex: 1 1 auto;
     height: 500px;
+}
+
+.messagesWrapper {
+    height: 400px;
+}
+
+.textareaWrapper {
+    display: flex;
+}
+
+.textArea {
+    height: 97px;
+    width: 350px;
+}
+
+.addBtn {
+    display: block;
+    width: 100px;
+    height: 30px;
+    margin: 30px auto 0;
 }

@@ -11,7 +11,8 @@ const Content = (props) => {
         <div className={classes.content}>
             <Route path="/profile" render={() => <Profile profileData={props.state.profileData}
                                                           dispatch={props.dispatch}  /> } />
-            <Route path="/messages" render={ () => <Messages messagesData={props.state.messagesData} /> } />
+            <Route path="/messages" render={ () => <Messages messagesData={props.state.messagesData}
+                                                             dispatch={props.dispatch}  /> } />
             <Route path="/friends" component={Friends} />
             <Route path="/my_works" component={MyWorks} />
             <Route path="/news" component={News} />

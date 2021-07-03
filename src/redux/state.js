@@ -50,7 +50,12 @@ let store = {
                 {id: 2, fullName: 'Александр Сергеевич Ветров'},
                 {id: 3, fullName: 'Лепёхин Станислав Акрин'},
                 {id: 4, fullName: 'Валенченцев Роман Георгиевич'}
-            ]
+            ],
+            dialogsListData: [
+                {id: 1, text: 'Привет, это моё первое сообщение в диалоге'},
+                {id: 2, text: 'Следущее сообщение после первого'}
+            ],
+            textareaCurrentValue: 'Сообщение от сюда'
         }
     },
     getState() {
@@ -78,6 +83,16 @@ let store = {
         else if(action.type === 'TEXTAREA-CHANGE-FUNCTION') {
             this._state.profileData.textareaValueShow = action.text;
             this._callSubscriber(this._state);
+        }
+        else if(action.type === 'CHANGE-SHOW-MESSAGE') {
+            this._state.messagesData.textareaCurrentValue = action.text;
+            this._callSubscriber();
+        }
+        else if(action.type === 'ADD-NEW-MESSAGE') {
+            let message = {id: 3, text: this._state.messagesData.textareaCurrentValue};
+            this._state.messagesData.dialogsListData.push(message);
+            this._state.messagesData.textareaCurrentValue = '';
+            this._callSubscriber();
         }
     }
 

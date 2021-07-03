@@ -1,0 +1,16 @@
+.messageItem {
+    display: flex;
+}
+
+.imgWrapper {
+    height: 50px;
+    flex-basis: 50px;
+}
+
+.img {
+    width: 100%;
+}
+
+.text {
+    margin: 5px 0 0 10px;
+}
