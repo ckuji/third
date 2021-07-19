@@ -9,10 +9,8 @@ import {Route} from "react-router-dom";
 const Content = (props) => {
     return (
         <div className={classes.content}>
-            <Route path="/profile" render={() => <Profile profileData={props.state.profileData}
-                                                          dispatch={props.dispatch}  /> } />
-            <Route path="/messages" render={ () => <Messages messagesData={props.state.messagesData}
-                                                             dispatch={props.dispatch}  /> } />
+            <Route path="/profile" render={() => <Profile store={props.store} /> } />
+            <Route path="/messages" render={() => <Messages store={props.store} /> } />
             <Route path="/friends" component={Friends} />
             <Route path="/my_works" component={MyWorks} />
             <Route path="/news" component={News} />

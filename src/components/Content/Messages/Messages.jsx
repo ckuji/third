@@ -2,22 +2,23 @@ import classes from './Messages.module.css';
 import FriendItem from "./FriendItem/FriendItem";
 import MessageItem from "./MessageItem/MessageItem";
 import React from "react";
+import {addNewMessageActionCreator, changeShowMessageActionCreator} from "../../../redux/messages-reducer";
 
 const Messages = (props) => {
 
-    let someFriendList = props.messagesData.friendsListData.map( friend => <FriendItem friendName={friend.fullName} friendId={friend.id} /> )
+    let someFriendList = props.store.getState().messagesPage.friendsListData.map( friend => <FriendItem friendName={friend.fullName} friendId={friend.id} /> )
 
-    let someDialogList = props.messagesData.dialogsListData.map( dialog => <MessageItem text={dialog.text} /> )
+    let someDialogList = props.store.getState().messagesPage.dialogsListData.map( dialog => <MessageItem text={dialog.text} /> )
 
     let newMessageElement = React.createRef();
 
     let onMessageChange = () => {
         let symbols = newMessageElement.current.value;
-        props.dispatch( {type: 'CHANGE-SHOW-MESSAGE', text: symbols} );
+        props.store.dispatch( changeShowMessageActionCreator(symbols) );
     }
 
     let addMessage = () => {
-        props.dispatch( {type: 'ADD-NEW-MESSAGE'} )
+        props.store.dispatch( addNewMessageActionCreator() )
     }
 
     return (
@@ -31,7 +32,7 @@ const Messages = (props) => {
                 </div>
                 <div className={classes.textareaWrapper}>
                     <textarea className={classes.textArea}
-                              value={props.messagesData.textareaCurrentValue}
+                              value={props.store.getState().messagesPage.textareaCurrentValue}
                               ref={newMessageElement}
                               onChange={onMessageChange}  />
                     <button className={classes.addBtn} onClick={addMessage}>Отправить</button>
