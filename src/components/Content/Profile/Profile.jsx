@@ -4,10 +4,8 @@ import React from "react";
 
 const Profile = (props) => {
 
-    let textareaValue = React.createRef();
-
-    let textareaChange = () => {
-        let text = textareaValue.current.value;
+    let textareaChange = (e) => {
+        let text = e.target.value;
         props.textareaChange(text);
     };
 
@@ -30,7 +28,6 @@ const Profile = (props) => {
                 <h1>Записи</h1>
                 <form action="">
                     <textarea className={classes.sendText}
-                              ref={textareaValue}
                               value={props.textareaProfileValue}
                               onChange={textareaChange}  />
                     <div className={classes.buttonWrapper}>

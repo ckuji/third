@@ -9,10 +9,8 @@ const Messages = (props) => {
 
     let someDialogList = props.messagesState.dialogsListData.map( dialog => <MessageItem text={dialog.text} /> )
 
-    let newMessageElement = React.createRef();
-
-    let onMessageChange = () => {
-        let symbols = newMessageElement.current.value;
+    let onMessageChange = (e) => {
+        let symbols = e.target.value;
         props.onMessageChange(symbols);
     }
 
@@ -32,7 +30,6 @@ const Messages = (props) => {
                 <div className={classes.textareaWrapper}>
                     <textarea className={classes.textArea}
                               value={props.messagesState.textareaCurrentValue}
-                              ref={newMessageElement}
                               onChange={onMessageChange}  />
                     <button className={classes.addBtn} onClick={addMessage}>Отправить</button>
                 </div>
