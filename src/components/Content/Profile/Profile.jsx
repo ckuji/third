@@ -1,7 +1,6 @@
 import classes from './Profile.module.css';
 import Posts from "./Posts/Posts";
 import React from "react";
-import {addNewPostActionCreator, textareaChangeActionCreator} from "../../../redux/profile-reducer";
 
 const Profile = (props) => {
 
@@ -9,11 +8,11 @@ const Profile = (props) => {
 
     let textareaChange = () => {
         let text = textareaValue.current.value;
-        props.store.dispatch( textareaChangeActionCreator(text) );
+        props.textareaChange(text);
     };
 
     let addPost = () => {
-        props.store.dispatch( addNewPostActionCreator() );
+        props.addPost();
     };
 
     return (
@@ -22,23 +21,23 @@ const Profile = (props) => {
                 <img className={classes.avaImg} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOJDa6S5yA2FBlmLse2elZQS-wjrfc8C0PbA&usqp=CAU" alt=""/>
             </div>
             <div className={classes.info}>
-                <p>{props.store.getState().profilePage.startProfileData[0].fullName}</p>
-                <p>{props.store.getState().profilePage.startProfileData[0].placeLiving}</p>
-                <p>{props.store.getState().profilePage.startProfileData[0].placeWorking}</p>
-                <p>Общее количество лайков: {props.store.getState().profilePage.startProfileData[0].commonCountLikes}</p>
+                <p>{props.startState.fullName}</p>
+                <p>{props.startState.placeLiving}</p>
+                <p>{props.startState.placeWorking}</p>
+                <p>Общее количество лайков: {props.startState.commonCountLikes}</p>
             </div>
             <div className={classes.posts}>
                 <h1>Записи</h1>
                 <form action="">
                     <textarea className={classes.sendText}
                               ref={textareaValue}
-                              value={props.store.getState().profilePage.textareaValueShow}
+                              value={props.textareaProfileValue}
                               onChange={textareaChange}  />
                     <div className={classes.buttonWrapper}>
                         <div className={classes.sendButton} onClick={addPost}>Отправить</div>
                     </div>
                 </form>
-                <Posts postData={props.store.getState().profilePage.postData} />
+                <Posts postData={props.postData} />
             </div>
         </div>
     );
