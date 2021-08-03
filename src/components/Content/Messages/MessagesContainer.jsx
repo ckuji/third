@@ -7,7 +7,7 @@ let mapStateToProps = (state) => {
     return {
         friendsListData: state.messagesPage.friendsListData,
         dialogsListData: state.messagesPage.dialogsListData,
-        textareaCurrentValue: state.textareaCurrentValue
+        textareaCurrentValue: state.messagesPage.textareaCurrentValue
     }
 }
 
