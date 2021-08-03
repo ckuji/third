@@ -17,14 +17,21 @@ let initialState = {
 
 const messagesReducer = (state = initialState, action) => {
     switch(action.type) {
-        case CHANGE_SHOW_MESSAGE:
-            state.textareaCurrentValue = action.text;
-            return state;
-        case ADD_NEW_MESSAGE:
+        case CHANGE_SHOW_MESSAGE: {
+            let stateCopy = {...state};
+            stateCopy.textareaCurrentValue = [...state.textareaCurrentValue];
+            stateCopy.textareaCurrentValue = action.text;
+            return stateCopy;
+        }
+        case ADD_NEW_MESSAGE: {
             let message = {id: 3, text: state.textareaCurrentValue};
-            state.dialogsListData.push(message);
-            state.textareaCurrentValue = '';
-            return state;
+            let stateCopy = {...state};
+            stateCopy.dialogsListData = [...state.dialogsListData];
+            stateCopy.dialogsListData.push(message);
+            stateCopy.textareaCurrentValue = [...state.textareaCurrentValue];
+            stateCopy.textareaCurrentValue = '';
+            return stateCopy;
+        }
         default:
             return state;
     }

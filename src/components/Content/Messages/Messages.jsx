@@ -5,9 +5,9 @@ import React from "react";
 
 const Messages = (props) => {
 
-    let someFriendList = props.messagesState.friendsListData.map( friend => <FriendItem friendName={friend.fullName} friendId={friend.id} /> )
+    let someFriendList = props.friendsListData.map( friend => <FriendItem friendName={friend.fullName} friendId={friend.id} /> )
 
-    let someDialogList = props.messagesState.dialogsListData.map( dialog => <MessageItem text={dialog.text} /> )
+    let someDialogList = props.dialogsListData.map( dialog => <MessageItem text={dialog.text} /> )
 
     let onMessageChange = (e) => {
         let symbols = e.target.value;
@@ -29,7 +29,7 @@ const Messages = (props) => {
                 </div>
                 <div className={classes.textareaWrapper}>
                     <textarea className={classes.textArea}
-                              value={props.messagesState.textareaCurrentValue}
+                              value={props.textareaCurrentValue}
                               onChange={onMessageChange}  />
                     <button className={classes.addBtn} onClick={addMessage}>Отправить</button>
                 </div>
