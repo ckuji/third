@@ -1,0 +1,59 @@
+.users {
+    padding: 10px;
+}
+
+.allUsersStart {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.unit {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.imgWrapper {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 5px;
+}
+
+.img {
+    width: 100%;
+}
+
+.unitContent {
+    margin-left: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid #9c9c9c;
+    border-radius: 8px;
+}
+
+.flwBtn {
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+.fullName {
+    margin: 7px 0 0 10px;
+}
+
+.about {
+    margin: 30px 0 0 10px;
+}
+
+.country {
+    margin: 7px 10px 0 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.city {
+    margin: 30px 10px 0 0;
+    display: flex;
+    justify-content: flex-end;
+}
