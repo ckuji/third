@@ -1,27 +1,42 @@
 import React from "react";
-import {addNewPostActionCreator, textareaChangeActionCreator} from "../../../redux/profile-reducer";
+import {addNewPost, setProfile, textareaChange} from "../../../redux/profile-reducer";
 import Profile from "./Profile";
 import {connect} from "react-redux";
+import axios from "axios";
+import {withRouter} from "react-router-dom";
+
+class ProfileContainer extends React.Component {
+
+    componentDidMount() {
+        let userId = this.props.match.params.userId;
+        if (!userId) {
+            userId = 2
+        }
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId).then(response => {
+            this.props.setProfile(response.data);
+        });
+    }
+
+    render() {
+        return (
+            <Profile profile={this.props.profile}
+                     textareaProfileValue={this.props.textareaProfileValue}
+                     postData={this.props.postData}
+                     addNewPost={this.props.addNewPost}
+                     textareaChange={this.props.textareaChange}   />
+        );
+    }
+}
 
 let mapStateToProps = (state) => {
     return {
-        startState: state.profilePage.startProfileData[0],
+        profile: state.profilePage.profile,
         textareaProfileValue: state.profilePage.textareaValueShow,
         postData: state.profilePage.postData
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        textareaChange: (txt) => {
-            dispatch( textareaChangeActionCreator(txt) );
-        },
-        addPost: () => {
-            dispatch( addNewPostActionCreator() );
-        }
-    }
-}
+let WithRouterUserIdCC = withRouter(ProfileContainer);
 
-const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, {addNewPost, textareaChange, setProfile})(WithRouterUserIdCC);
 
-export default ProfileContainer;

@@ -6,7 +6,7 @@ const SET_ACTIVE_PAGE = 'SET-ACTIVE-PAGE';
 let initialState = {
     users: [],
     pageSize: 5,
-    allPageCount: 21,
+    allPageCount: 50,
     pageActive: 3
 }
 
@@ -47,9 +47,9 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export const followAC = (userId) => ({type: FOLLOW, userId: userId})
-export const unfollowAC = (userId) => ({type: UNFOLLOW, userId: userId})
-export const setUsersAC = (users) => ({type: SETUSERS, users})
-export const setActivePageAC = (pageActive) => ({type: SET_ACTIVE_PAGE, pageActive})
+export const follow = (userId) => ({type: FOLLOW, userId: userId})
+export const unfollow = (userId) => ({type: UNFOLLOW, userId: userId})
+export const setUsers = (users) => ({type: SETUSERS, users})
+export const setActivePage = (pageActive) => ({type: SET_ACTIVE_PAGE, pageActive})
 
 export default usersReducer;

@@ -1,16 +1,9 @@
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const TEXTAREA_CHANGE_FUNCTION = 'TEXTAREA-CHANGE-FUNCTION';
+const SET_PROFILE = 'SET-PROFILE';
 
 let initialState = {
-    startProfileData: [
-        {
-            id: 1,
-            fullName: 'Иванов Иван Иванович',
-            placeLiving: 'Место проживания: Курган',
-            placeWorking: 'Место работы: Фриланс',
-            commonCountLikes: 99
-        }
-    ],
+    profile: [],
     textareaValueShow: 'Начни писать от сюда',
     postData: [
         {
@@ -61,18 +54,19 @@ const profileReducer = (state = initialState, action) => {
                 textareaValueShow: action.text
             }
         }
+        case SET_PROFILE: {
+            return {
+                ...state,
+                profile: action.profile
+            }
+        }
         default:
             return state;
     }
 }
 
-export const addNewPostActionCreator = () => (
-    {type: ADD_NEW_POST}
-)
-
-export const textareaChangeActionCreator = (txt) => (
-    {type: TEXTAREA_CHANGE_FUNCTION, text: txt}
-)
-
+export const addNewPost = () => ({type: ADD_NEW_POST})
+export const textareaChange = (txt) => ({type: TEXTAREA_CHANGE_FUNCTION, text: txt})
+export const setProfile = (profile) => ({type: SET_PROFILE, profile})
 
 export default profileReducer;

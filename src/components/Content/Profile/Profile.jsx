@@ -13,16 +13,20 @@ const Profile = (props) => {
         props.addPost();
     };
 
+    if(!props.profile) {
+        return <div>LOADING...</div>
+    }
+
     return (
         <div className={classes.mainGrid}>
             <div className={classes.avatar}>
-                <img className={classes.avaImg} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOJDa6S5yA2FBlmLse2elZQS-wjrfc8C0PbA&usqp=CAU" alt=""/>
+                <img className={classes.avaImg} src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG6a6KfKK66Jy1eCuDau7yp2rb5dIfGvl45g&usqp=CAU' } alt=""/>
             </div>
             <div className={classes.info}>
-                <p>{props.startState.fullName}</p>
-                <p>{props.startState.placeLiving}</p>
-                <p>{props.startState.placeWorking}</p>
-                <p>Общее количество лайков: {props.startState.commonCountLikes}</p>
+                <p>{props.profile.fullName}</p>
+                <p>{props.profile.lookingForAJobDescription}</p>
+                <p>{props.profile.placeWorking}</p>
+                <p>Общее количество лайков: {props.profile.commonCountLikes}</p>
             </div>
             <div className={classes.posts}>
                 <h1>Записи</h1>

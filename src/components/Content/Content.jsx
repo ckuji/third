@@ -10,7 +10,7 @@ import UsersContainer from "./Users/UsersContainer";
 const Content = (props) => {
     return (
         <div className={classes.content}>
-            <Route path="/profile" render={() => <ProfileContainer /> } />
+            <Route path="/profile/:userId?" render={() => <ProfileContainer /> } />
             <Route path="/messages" render={() => <MessagesContainer /> } />
             <Route path="/users" component={UsersContainer} />
             <Route path="/friends" component={Friends} />
